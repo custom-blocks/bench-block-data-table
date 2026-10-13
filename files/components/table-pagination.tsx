@@ -1,0 +1,2 @@
+import type { PaginationState } from '../core/types';
+export function TablePagination({ pagination, pages, onPage }: { pagination: PaginationState; pages: number; onPage: (page: number) => void }) { return <nav aria-label="Pagination"><button type="button" disabled={pagination.pageIndex === 0} onClick={() => onPage(pagination.pageIndex - 1)}>Previous</button><span>Page {pagination.pageIndex + 1} of {pages}</span><button type="button" disabled={pagination.pageIndex >= pages - 1} onClick={() => onPage(pagination.pageIndex + 1)}>Next</button></nav>; }

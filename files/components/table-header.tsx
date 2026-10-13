@@ -1,0 +1,2 @@
+import type { Column, TableState } from '../core/types';
+export function TableHeader<T>({ columns, state, onSort }: { columns: Column<T>[]; state: TableState; onSort: (id: string) => void }) { return <tr>{columns.map(c => <th key={c.id}><button type="button" onClick={() => onSort(c.id)}>{c.header}{state.sorting.find(s => s.id === c.id)?.direction === 'asc' ? ' ↑' : state.sorting.find(s => s.id === c.id)?.direction === 'desc' ? ' ↓' : ''}</button></th>)}</tr>; }

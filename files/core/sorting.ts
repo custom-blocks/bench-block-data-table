@@ -1,0 +1,4 @@
+import type { SortRule, TableRow } from './types';
+import { compareValues } from '../utils/compare';
+export function sortRows<T>(rows: TableRow<T>[], rules: SortRule[]): TableRow<T>[] { if (!rules.length) return rows.slice(); return rows.map((row, index) => ({ row, index })).sort((a, b) => { for (const rule of rules) { const result = compareValues(a.row.values[rule.id], b.row.values[rule.id]); if (result) return rule.direction === 'desc' ? -result : result; } return a.index - b.index; }).map(item => item.row); }
+export function toggleSort(rules: SortRule[], id: string, multi = false): SortRule[] { const current = rules.find(r => r.id === id); const next = current?.direction === 'asc' ? 'desc' : current ? undefined : 'asc'; const base = multi ? rules.filter(r => r.id !== id) : []; return next ? [...base, { id, direction: next }] : base; }

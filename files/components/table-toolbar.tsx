@@ -1,0 +1,2 @@
+import type { FilterRule } from '../core/types';
+export function TableToolbar({ filters, onFilter, onExport }: { filters: FilterRule[]; onFilter: (f: FilterRule) => void; onExport: () => void }) { return <div role="toolbar"><input aria-label="Filter" onChange={e => onFilter({ id: 'global', value: e.target.value })} value={String(filters.find(f => f.id === 'global')?.value ?? '')} /><button type="button" onClick={onExport}>Export CSV</button></div>; }

@@ -1,0 +1,2 @@
+import type { TableRow } from '../core/types';
+export function aggregate<T>(rows: TableRow<T>[], id: string, mode: 'sum' | 'avg' | 'min' | 'max' | 'count'): number { if (mode === 'count') return rows.length; const values = rows.map(r => Number(r.values[id])).filter(Number.isFinite); if (!values.length) return 0; if (mode === 'sum') return values.reduce((a, b) => a + b, 0); if (mode === 'avg') return values.reduce((a, b) => a + b, 0) / values.length; return mode === 'min' ? Math.min(...values) : Math.max(...values); }

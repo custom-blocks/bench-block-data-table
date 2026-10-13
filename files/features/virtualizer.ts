@@ -1,0 +1,2 @@
+export interface VirtualRange { start: number; end: number; offsetTop: number; totalHeight: number; }
+export function getVirtualRange(count: number, scrollTop: number, viewportHeight: number, rowHeight = 36, overscan = 5): VirtualRange { const first = Math.floor(scrollTop / rowHeight); const start = Math.max(0, first - overscan); const end = Math.min(count, Math.ceil((scrollTop + viewportHeight) / rowHeight) + overscan); return { start, end, offsetTop: start * rowHeight, totalHeight: count * rowHeight }; }

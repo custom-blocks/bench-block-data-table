@@ -2,7 +2,6 @@
   "title": "Bench Data Table",
   "description": "A headless data table: sorting, filtering, pagination, column visibility and CSV export.",
   "category": "UI",
-  "icon": "📊",
   "tags": ["table", "data", "benchmark"],
   "requires": [],
   "dependencies": {},
